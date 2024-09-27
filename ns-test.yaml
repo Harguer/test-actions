@@ -6,3 +6,29 @@ metadata:
     name: test-github-actions
   annotations:
     description: "This is my test namespace"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: github-actions-deployment
+  namespace: test-github-actions  # Namespace where the deployment will run
+  labels:
+    app: github-actions-app
+spec:
+  replicas: 3  # Number of pod replicas
+  selector:
+    matchLabels:
+      app: github-actions-app
+  template:
+    metadata:
+      labels:
+        app: github-actions-app
+    spec:
+      containers:
+      - name: github-actions-container
+        image: nginx:latest  # Replace this with your desired container image
+        ports:
+        - containerPort: 80
+        env:
+        - name: ENVIRONMENT
+          value: "production"  # Example environment variable

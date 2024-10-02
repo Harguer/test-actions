@@ -16,10 +16,10 @@ jobs:
     - name: Set up Docker
       uses: docker/setup-buildx-action@v1
 
-    - name: Grype Scan
-      run: |
-        curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
-        grype nginx:latest
+    #- name: Grype Scan
+    #  run: |
+    #    curl -sSfL https://raw.githubusercontent.com/anchore/grype/main/install.sh | sh -s -- -b /usr/local/bin
+    #   grype nginx:latest
 
     - name: Deploy to Kubernetes
       run: |

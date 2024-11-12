@@ -24,3 +24,7 @@ jobs:
     - name: Deploy to Kubernetes
       run: |
         kubectl apply -f ns-test.yaml
+
+    - name: exit
+      run: |
+        echo this task is completed.
